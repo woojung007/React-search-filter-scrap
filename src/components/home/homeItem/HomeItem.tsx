@@ -11,7 +11,6 @@ interface IPropsHomeItem {
 const HomeItem = (props: IPropsHomeItem) => {
   const [isScrap, setIsScrap] = useState(false);
 
-  // 스크랩하기
   const onClickScrap = (item: any) => () => {
     const scrapArr = JSON.parse(localStorage.getItem("scrap") || "[]");
     const temp = scrapArr.filter(
@@ -46,7 +45,6 @@ const HomeItem = (props: IPropsHomeItem) => {
     Modal.success({ content: "기사를 스크랩 하였습니다." });
   };
 
-  // 스크랩 취소
   const onClickDelScrap = (item: any) => () => {
     const scrapArr = JSON.parse(localStorage.getItem("scrap") || "[]");
     const deleteScrapArr = scrapArr.filter(
@@ -59,8 +57,8 @@ const HomeItem = (props: IPropsHomeItem) => {
 
   useEffect(() => {}, [props.news]);
 
-  const scrapArr = JSON.parse(localStorage.getItem("scrap") || "[]");
-  const idArr = scrapArr.map((el: any) => el._id);
+  const scrapedArr = JSON.parse(localStorage.getItem("scrap") || "[]");
+  const idArr = scrapedArr.map((el: any) => el._id);
 
   return (
     <S.Wrapper>

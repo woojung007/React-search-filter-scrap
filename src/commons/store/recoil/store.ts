@@ -10,4 +10,9 @@ export const filterArray = atom({
   default: ["", "", []],
 });
 
-// export const isScrapNews = atom({ key: `isScrapNews/${v1()}`, default: false });
+export const isScrapNews = atom({ key: `isScrapNews/${v1()}`, default: false });
+
+export const isClickFilter = atom({
+  key: `isClickFilter/${v1()}`,
+  default: false,
+});

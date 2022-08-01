@@ -2,7 +2,11 @@ import * as S from "./Modal.style";
 import DatePickerPage from "../../commons/libraries/DatePicker";
 import { ChangeEvent, useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { filterArray, isOpenModal } from "../../commons/store/recoil/store";
+import {
+  filterArray,
+  isOpenModal,
+  isClickFilter,
+} from "../../commons/store/recoil/store";
 
 const COUNTRY_ARRAY = [
   { country: "대한민국", id: 0, isClick: false, ENG: "SouthKorea" },
@@ -28,6 +32,7 @@ const FilterModal = () => {
 
   const [, setFilter] = useRecoilState(filterArray);
   const [, setIsOpen] = useRecoilState(isOpenModal);
+  const [, setIsFilter] = useRecoilState(isClickFilter);
 
   const onChangeHeadline = (event: ChangeEvent<HTMLInputElement>) => {
     setHeadline(event.target.value);
@@ -52,6 +57,7 @@ const FilterModal = () => {
 
     setFilter([headline, String(date), ...selectCountry]);
     setIsOpen((prev) => !prev);
+    setIsFilter(true);
   };
 
   return (
